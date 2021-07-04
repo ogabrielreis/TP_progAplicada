@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
   int result, hip, numTriangulo;
-  char operacao;
+  char operacao, cont;
   string decisao;
   bool continuar = true;
   struct Triangulo t;
@@ -70,12 +70,21 @@ int main() {
           incluirNaLista(triangulos, result);
         }
       }
-
       varrerLista(triangulos);
     }
 
     else if (decisao == "ler") {
       lerArquivo();
+    }
+
+    cout << "Deseja continuar? (s ou n)" << endl;
+    cin >> cont;
+
+    if (cont == 's') {
+      continuar = true;
+    }
+    else {
+      continuar = false;
     }
   }
 }
