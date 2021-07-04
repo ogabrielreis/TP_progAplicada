@@ -7,67 +7,75 @@ int main() {
   int result, hip, numTriangulo;
   char operacao;
   string decisao;
+  bool continuar = true;
   struct Triangulo t;
 
   tLista* triangulos = new tLista;
 
   inicializaLista(triangulos);
 
-  cout << "Deseja gravar ou ler no banco de dados? " << endl;
-  cin >> decisao;
+  while (continuar == true) {
 
-  if (decisao == "gravar") {
+    cout << "Deseja gravar ou ler no banco de dados? " << endl;
+    cin >> decisao;
 
-    cout << "Quantos triangulos deseja salvar? " << endl;
-    cin >> numTriangulo;
+    if (decisao == "gravar") {
 
-    for (numTriangulo; numTriangulo > 0; numTriangulo--) {    
+      cout << "Quantos triangulos deseja salvar? " << endl;
+      cin >> numTriangulo;
 
-      cout << "digite qual operação deseja efetuar (p = perimetro, a = area ou h = hipotenusa)" << endl;
-      cin >> operacao;
+      for (numTriangulo; numTriangulo > 0; numTriangulo--) {    
 
-      if (operacao == 'p') {
-        cout << "Ótimo, agora vamos para os lados do triângulo" << endl;
-        cout << "Digite o valor do lado 1: "<< endl;
-        cin >> t.lado1;
-        cout << "Digite o valor do lado 2: " << endl;
-        cin >> t.lado2;
-        cout << "Digite o valor do lado 3: " << endl;
-        cin >> t.lado3;
+        cout << "digite qual operação deseja efetuar (p = perimetro, a = area ou h = hipotenusa)" << endl;
+        cin >> operacao;
 
-        result = calcPerimetro(t.lado1, t.lado2, t.lado3);
-        cout << "O resultado da operação é " << result << endl;
+        if (operacao == 'p') {
+          cout << "Ótimo, agora vamos para os lados do triângulo" << endl;
+          cout << "Digite o valor do lado 1: "<< endl;
+          cin >> t.lado1;
+          cout << "Digite o valor do lado 2: " << endl;
+          cin >> t.lado2;
+          cout << "Digite o valor do lado 3: " << endl;
+          cin >> t.lado3;
 
-        incluirNaLista(triangulos, result);
+          result = calcPerimetro(t.lado1, t.lado2, t.lado3);
+          cout << "O resultado da operação é " << result << endl;
+
+          incluirNaLista(triangulos, result);
+        }
+        
+        else if (operacao == 'a') {
+          cout << "Ótimo, agora vamos para os lados do triângulo" << endl;
+          cout << "Digite o valor do lado 1: "<< endl;
+          cin >> t.lado1;
+          cout << "Digite o valor do lado 2: " << endl;
+          cin >> t.lado2;
+
+          result = calcArea(t.lado1, t.lado2);
+          cout << "O resultado da operação é " << result << endl;
+
+          incluirNaLista(triangulos, result);
+        }
+
+        else if (operacao == 'h') {
+          cout << "Ótimo, agora vamos para os lados do triângulo" << endl;
+          cout << "Digite o valor do lado 1: "<< endl;
+          cin >> t.lado1;
+          cout << "Digite o valor do lado 2: " << endl;
+          cin >> t.lado2;
+
+          hip = calcHipotenusa(t.lado1, t.lado2);
+          cout << "A hipotenusa é igual a " << hip << endl;
+
+          incluirNaLista(triangulos, result);
+        }
       }
-      
-      else if (operacao == 'a') {
-        cout << "Ótimo, agora vamos para os lados do triângulo" << endl;
-        cout << "Digite o valor do lado 1: "<< endl;
-        cin >> t.lado1;
-        cout << "Digite o valor do lado 2: " << endl;
-        cin >> t.lado2;
 
-        result = calcArea(t.lado1, t.lado2);
-        cout << "O resultado da operação é " << result << endl;
-
-        incluirNaLista(triangulos, result);
-      }
-
-      else if (operacao == 'h') {
-        cout << "Ótimo, agora vamos para os lados do triângulo" << endl;
-        cout << "Digite o valor do lado 1: "<< endl;
-        cin >> t.lado1;
-        cout << "Digite o valor do lado 2: " << endl;
-        cin >> t.lado2;
-
-        hip = calcHipotenusa(t.lado1, t.lado2);
-        cout << "A hipotenusa é igual a " << hip << endl;
-
-        incluirNaLista(triangulos, result);
-      }
+      varrerLista(triangulos);
     }
 
-    varrerLista(triangulos);
+    else if (decisao == "ler") {
+      lerArquivo();
+    }
   }
 }

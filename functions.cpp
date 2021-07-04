@@ -1,6 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -39,7 +40,7 @@ tNo* criaNo(int triangulo) {
 
   no -> resultados = triangulo;
   no -> proximo = NULL;
-  return NULL;
+  return no;
 }
 
 struct tLista {
@@ -89,11 +90,30 @@ void varrerLista (tLista* pLista) {
 
   ofstream dbTriangulo;
   dbTriangulo.open ("dbTriangulo.txt");
-
   int tamanho = obterTamanho(pLista);
+  tNo* atual = pLista->primeiro;
 
   for (int  i; i < tamanho; i++) {
-    dbTriangulo << pLista[i].marcador;
+    dbTriangulo << atual->resultados << endl;
+    if(atual->proximo != NULL){
+      atual = atual ->proximo;
+    }
+
   }
-  dbTriangulo.close();  
+
+  dbTriangulo.close();
+}
+
+
+void lerArquivo() {
+  ifstream dbTriangulo("dbTriangulo.txt");
+  string line;
+
+  if (dbTriangulo.is_open()) {
+    while (! dbTriangulo.eof()) {
+      getline(dbTriangulo, line);
+      cout << line << endl;
+    }
+  }
+  dbTriangulo.close();
 }
