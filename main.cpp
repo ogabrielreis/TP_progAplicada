@@ -1,5 +1,5 @@
 #include <iostream>
-#include "tTriangulo.cpp"
+#include "functions.cpp"
 
 using namespace std;
 
@@ -8,6 +8,9 @@ int main() {
   char operacao;
   string decisao;
   struct Triangulo t;
+  tLista* triangulos = new tLista;
+
+  inicializaLista(triangulos);
 
   cout << "Deseja gravar ou ler no banco de dados? " << endl;
   cin >> decisao;
@@ -17,7 +20,8 @@ int main() {
     cout << "Quantos triangulos deseja salvar? " << endl;
     cin >> numTriangulo;
 
-    for (numTriangulo; numTriangulo < 0; numTriangulo--) {       
+    for (numTriangulo; numTriangulo > 0; numTriangulo--) {    
+
       cout << "digite qual operação deseja efetuar (p = perimetro, a = area ou h = hipotenusa)" << endl;
       cin >> operacao;
 
