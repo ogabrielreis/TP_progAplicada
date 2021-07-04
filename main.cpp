@@ -8,6 +8,7 @@ int main() {
   char operacao;
   string decisao;
   struct Triangulo t;
+
   tLista* triangulos = new tLista;
 
   inicializaLista(triangulos);
@@ -36,6 +37,8 @@ int main() {
 
         result = calcPerimetro(t.lado1, t.lado2, t.lado3);
         cout << "O resultado da operação é " << result << endl;
+
+        incluirNaLista(triangulos, result);
       }
       
       else if (operacao == 'a') {
@@ -47,6 +50,8 @@ int main() {
 
         result = calcArea(t.lado1, t.lado2);
         cout << "O resultado da operação é " << result << endl;
+
+        incluirNaLista(triangulos, result);
       }
 
       else if (operacao == 'h') {
@@ -58,11 +63,11 @@ int main() {
 
         hip = calcHipotenusa(t.lado1, t.lado2);
         cout << "A hipotenusa é igual a " << hip << endl;
+
+        incluirNaLista(triangulos, result);
       }
-
-      cout << "Deseja continuar? (s ou n) " << endl;
-      cin >> decisao;
-
     }
+
+    varrerLista(triangulos);
   }
 }
